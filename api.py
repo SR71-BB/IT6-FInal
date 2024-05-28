@@ -1,4 +1,3 @@
-# save this as app.py
 from flask import Flask, make_response, jsonify
 from flask_mysqldb import MySQL
 
@@ -17,7 +16,7 @@ def hello():
     return "Hello, World!"
 
 @app.route("/personinfo", methods=["GET"])
-def get_actors():
+def get_personinfo():
     cur = mysql.connection.cursor()
     query = """
     select * from personinfo
@@ -27,6 +26,8 @@ def get_actors():
     cur.close
 
     return make_response(jsonify(data), 200)
+
+
 
 if __name__ == "__main__":
     app.run(debug = True)
